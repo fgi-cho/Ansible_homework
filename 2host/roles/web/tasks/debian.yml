@@ -1,17 +1,11 @@
 - name: Debian - Install Apache HTTP Server
   apt: 
-    name: apache2 
+    name: "{{ item }}"
     state: present
-
-- name: Debian - Install Apache HTTP Server
-  apt: 
-    name: php 
-    state: present
-   
-- name: Debian - Install Apache HTTP Server
-  apt: 
-    name: php-mysqli
-    state: present
+  loop:
+    - apache2
+    - php
+    - php-mysqli
 
 - name: Change to index.php
   shell: sudo sed -i 's/DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm/DirectoryIndex index.php/g' /etc/apache2/mods-available/dir.conf
