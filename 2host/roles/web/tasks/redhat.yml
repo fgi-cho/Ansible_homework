@@ -1,0 +1,38 @@
+- name: Red Hat - Install Apache HTTP Server
+  dnf: 
+    name: httpd
+    state: present
+    
+- name: Red Hat - Install PHP Server
+  dnf: 
+    name: php
+    state: present
+    
+- name: Red Hat - Install PHP-mysqli Server
+  dnf: 
+    name: php-mysqli
+    state: present 
+    
+- name: Copy files
+  copy:
+    src: web/
+    dest: /var/www/html/
+        
+- name: Red Hat - Start and Enable Apache HTTP Server
+  service: 
+    name: httpd 
+    state: restarted 
+    enabled: true
+
+- name: Red Hat - Open HTTP Port in the Firewall
+  firewalld:
+    port: 80/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+    
+- name: Change to index.php
+  shell: sudo echo "192.168.99.101 db" >> /etc/hosts
+
+- name: Change httpd_can_network_connect_db
+  shell: sudo setsebool -P httpd_can_network_connect_db=1

@@ -1,0 +1,12 @@
+Log created: 2022-12-08T06:56:00.977371000Z
+Process ID:  194993 (0x2f9b1)
+Parent PID:  1 (0x1)
+Executable:  /usr/lib64/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib64/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: 2host_db_1670450561191_41332
+Arg[3]: --startvm
+Arg[4]: ec7f01ec-c7f8-44b3-b6a0-947a781101c8
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2

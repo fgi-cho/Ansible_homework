@@ -1,0 +1,25 @@
+- name: Red Hat - Install Mysql Server
+  dnf: 
+    name: mariadb-server
+    state: present
+  
+- name: Copy files
+  copy:
+    src: db/
+    dest: /tmp/
+        
+- name: Red Hat - Start and Enable Mysql Server
+  service: 
+    name: mariadb
+    state: started 
+    enabled: true
+
+- name: Red Hat - Open Mysql Port in the Firewall
+  firewalld:
+    port: 3306/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+     
+- name: Import DB
+  shell: sudo mysql -uroot </tmp/db_setup.sql

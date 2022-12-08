@@ -1,0 +1,12 @@
+---
+- hosts: nginx
+  become: true
+
+  tasks:
+    - name: Pull Nginx Image
+      shell: docker pull nginx
+
+    - name: Start Nginx Docker container
+      shell: docker run --name docker-nginx -p 80:80 -d nginx
+
+

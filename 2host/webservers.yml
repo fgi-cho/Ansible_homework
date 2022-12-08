@@ -1,0 +1,9 @@
+---
+- hosts: webs
+  become: true
+  roles:
+    - web
+- hosts: dbs
+  become: true
+  roles:
+    - db  
